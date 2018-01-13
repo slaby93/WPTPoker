@@ -3,10 +3,10 @@ import styled from 'styled-components'
 import levels from './consts/levels'
 
 export class LevelList extends React.PureComponent {
-  mapLevelsToComponentss = (levels)=>{
-    return levels.map(({type, small, big, ante},index) => {
+  mapLevelsToComponentss = (levels) => {
+    return levels.map(({ type, small, big, ante }, index) => {
 
-      if(type === 'BREAK'){
+      if (type === 'BREAK') {
         return <li key={index}>{type}</li>
       }
 
@@ -21,15 +21,17 @@ export class LevelList extends React.PureComponent {
     const { className } = this.props
     const mappedLeveles = this.mapLevelsToComponentss(levels)
     return (
-      <ul className={className}>
-        {mappedLeveles}
-      </ul>
+      <div className={className}>
+        <h1>Levels:</h1>
+        <ul >
+          {mappedLeveles}
+        </ul>
+      </div>
     )
   }
 }
 
 const StyledComponent = styled(LevelList) `
-  list-style: none;
 `
 
 export default StyledComponent

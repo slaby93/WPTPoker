@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import styled, { css } from 'styled-components';
-import MainDisplayer from './MainDisplayer'
-import ChipsList from './ChipsList'
-import LevelList from './LevelList'
-import Header from './Header'
+import MainDisplayer from './../MainDisplayer'
+import ChipsList from './../ChipsList'
+import LevelList from './../LevelList'
+import Header from './../Header'
 
 class App extends Component {
   render() {

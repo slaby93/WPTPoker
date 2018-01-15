@@ -33,6 +33,7 @@ export const ChipsList = ({className}) => {
   })
   return (
     <div className={className}>
+      <h1>Chips:</h1>
       {mappedChips}
     </div>
   )
@@ -44,19 +45,30 @@ const Chip = styled.div`
   margin-bottom: 40px;
   justify-content: center;
   align-items: center;
-  & > span { display: block; margin-left: 20px;}
+  & > span { 
+    display: block; 
+    margin-left: 20px;
+    width: 50px;
+    text-align: center;
+  }
 `
 
 const StyledComponent = styled(ChipsList) `
+  margin-top: 10%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
 
   img {
     --size: 60px;
     width: var(--size);
     height: var(--size);
+  }
+
+  h1{
+    font-weight: bold;
+    font-size: 50px;
+    margin-bottom: 50px;
   }
 `
 

@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 export const Header = ({className}) => {
   return (<div className={className}>
-    <span>IX WPT</span>
+    <h1>IX WPT</h1>
     <span>NL HOLDEM</span>
   </div>)
 }
@@ -13,8 +13,16 @@ const StyledComponent = styled(Header)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-bottom: 1px solid black;
-  font-size: 80px;
+  font-weight: bold;
+  margin-right: 220px;
+  
+  h1 {
+    font-size: 100px;
+  }
+
+  span {
+    font-size: 35px;
+  }
 `
 
 export default StyledComponent

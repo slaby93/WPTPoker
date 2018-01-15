@@ -38,17 +38,19 @@ const StyledComponent = styled(LevelList) `
   overflow: auto;
 
   h1 {
-    font-size: 50px;
+    font-size: 30px;
     align-self: center;
+    font-weight: bold;
   }
+  
   ul {
     width: fit-content;
     align-self: center;
     text-align: center;
 
     li {
-      font-size: 35px;
-      margin: 50px 0;
+      font-size: 25px;
+      margin: 20px 0;
     }
   }
 `

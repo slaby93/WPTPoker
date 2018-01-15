@@ -14,9 +14,11 @@ export const MainDisplayer = ({ className, currentLevel }) => {
 }
 
 const StyledComponent = styled(MainDisplayer) `
-  display: grid;
-  border-left: 1px solid black;
-  border-right: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 25px;
+  font-weight: bold;
 
 `
 

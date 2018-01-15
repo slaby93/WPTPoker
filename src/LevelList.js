@@ -32,6 +32,25 @@ export class LevelList extends React.PureComponent {
 }
 
 const StyledComponent = styled(LevelList) `
+  display: flex;
+  flex-direction: column;
+  margin-top: 10%;
+  overflow: auto;
+
+  h1 {
+    font-size: 50px;
+    align-self: center;
+  }
+  ul {
+    width: fit-content;
+    align-self: center;
+    text-align: center;
+
+    li {
+      font-size: 35px;
+      margin: 50px 0;
+    }
+  }
 `
 
 export default StyledComponent

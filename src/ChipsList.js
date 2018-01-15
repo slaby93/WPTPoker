@@ -26,10 +26,10 @@ const ChipList = [
 
 export const ChipsList = ({className}) => {
   const mappedChips = ChipList.map(({ img, value }) => {
-    return <div key={value}>
+    return <Chip key={value}>
       <img src={img}/>
       <span>{value}</span>
-    </div>
+    </Chip>
   })
   return (
     <div className={className}>
@@ -38,9 +38,25 @@ export const ChipsList = ({className}) => {
   )
 }
 
+const Chip = styled.div`
+  display: flex;
+  font-size: 30px;
+  margin-bottom: 40px;
+  justify-content: center;
+  align-items: center;
+  & > span { display: block; margin-left: 20px;}
+`
+
 const StyledComponent = styled(ChipsList) `
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
   img {
-    width: 60px;
+    --size: 60px;
+    width: var(--size);
+    height: var(--size);
   }
 `
 

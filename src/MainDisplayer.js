@@ -15,6 +15,8 @@ export const MainDisplayer = ({ className, currentLevel }) => {
 
 const StyledComponent = styled(MainDisplayer) `
   display: grid;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
 
 `
 

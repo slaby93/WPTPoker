@@ -13,6 +13,8 @@ const StyledComponent = styled(Header)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border-bottom: 1px solid black;
+  font-size: 80px;
 `
 
 export default StyledComponent

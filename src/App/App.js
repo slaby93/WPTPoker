@@ -4,20 +4,29 @@ import MainDisplayer from './../MainDisplayer'
 import ChipsList from './../ChipsList'
 import LevelList from './../LevelList'
 import Header from './../Header'
+import Debugger from './../Debug'
 
 class App extends Component {
   render() {
-    const { className } = this.props
+    const { className, currentLeveLTimeLeft, currentLevel, currentBlinds, nextBlinds } = this.props
     return (
-      <div className={className}>
-        <Header />
-        <LevelList />
-        <MainDisplayer />
-        <ChipsList />
-        <Logo>
-          <img src='http://www.knmf.im.uj.edu.pl/wp-content/uploads/2017/05/logo_knmfuj_150.png'/>
-        </Logo>
-      </div>
+      <React.Fragment>
+        <div className={className}>
+          <Header />
+          <LevelList />
+          <MainDisplayer
+            time={currentLeveLTimeLeft}
+            currentLevel={currentLevel}
+            currentBlinds={currentBlinds}
+            nextBlinds={nextBlinds}
+          />
+          <ChipsList />
+          <Logo>
+            <img src='http://www.knmf.im.uj.edu.pl/wp-content/uploads/2017/05/logo_knmfuj_150.png' />
+          </Logo>
+        </div>
+        <Debugger />
+      </React.Fragment>
     );
   }
 }

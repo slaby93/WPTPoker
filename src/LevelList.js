@@ -3,23 +3,26 @@ import styled from 'styled-components'
 import levels from './consts/levels'
 
 export class LevelList extends React.PureComponent {
-  mapLevelsToComponentss = (levels) => {
+  mapLevelsToComponentss = (levels, currentLevel, onLevelClick) => {
     return levels.map(({ type, small, big, ante }, index) => {
+      const isActive = index === currentLevel
 
-      if (type === 'BREAK') {
-        return <li key={index}>{type}</li>
-      }
-
-      return <li key={index}>
-
-        <span>{small}/{big} {ante > 0 && `(${ante})`}</span>
+      return <li
+        onClick={() => onLevelClick(index)}
+        className={isActive ? 'active' : ''}
+        key={index}>
+        {
+          type === 'BREAK'
+            ? type
+            : <span>{small}/{big} {ante > 0 && `(${ante})`}</span>
+        }
       </li>
     })
   }
 
   render() {
-    const { className } = this.props
-    const mappedLeveles = this.mapLevelsToComponentss(levels)
+    const { className, currentLevel, onLevelClick } = this.props
+    const mappedLeveles = this.mapLevelsToComponentss(levels, currentLevel, onLevelClick)
     return (
       <div className={className}>
         <h1>Levels:</h1>
@@ -49,8 +52,13 @@ const StyledComponent = styled(LevelList) `
     text-align: center;
 
     li {
+      cursor: pointer;
       font-size: 25px;
       margin: 20px 0;
+
+      &.active {
+        font-weight: bold;
+      }
     }
   }
 `

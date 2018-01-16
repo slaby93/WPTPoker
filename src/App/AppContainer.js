@@ -9,17 +9,29 @@ export class AppContainer extends React.PureComponent {
   constructor() {
     super();
     this.state = {
+      isGameFinished: false,
       currentLevel: null,
       currentLeveLTimeLeft: null
     }
   }
 
   componentDidMount() {
-    this.loadLevel()
-    this.startLevel()
+    this.loadLevel(0)
   }
 
-  loadLevel(levelIndex = 0) {
+  onLevelClick = (index) => {
+    this.stopTimer()
+    this.setState({
+      isGameFinished: false
+    })
+    this.loadLevel(index)
+  }
+
+  onTimerClick = () => {
+    this.timer ? this.stopTimer() : this.startTimer()
+  }
+
+  loadLevel = (levelIndex = 0) => {
     const {
       type,
       small,
@@ -28,34 +40,71 @@ export class AppContainer extends React.PureComponent {
       value
     } = levels[levelIndex]
     const nextLevel = levels[levelIndex + 1]
-    this.setState({
-      currentLevel: levels[levelIndex].value,
+    let newState = {
+      currentLevel: levelIndex,
       currentBlinds: {
         small,
         big,
         ante,
       },
-      nextBlinds: {
-        small: nextLevel.small,
-        big: nextLevel.big,
-        ante: nextLevel.ante,
-      },
-      currentLeveLTimeLeft: LEVEL_TIME
-    })
+      nextBlinds: null,
+      currentLeveLTimeLeft: type === 'BREAK' ? BREAK_TIME : LEVEL_TIME
+    }
+    if (nextLevel) {
+      newState = Object.assign({}, newState, {
+        nextBlinds: {
+          small: nextLevel.small,
+          big: nextLevel.big,
+          ante: nextLevel.ante,
+        },
+      })
+    }
+    this.setState(newState)
   }
 
-  startLevel() {
-    this.timer = setInterval(() => {
+  startTimer = () => {
+    this.timer = setInterval(this.count, 1000)
+  }
+
+  stopTimer = () => {
+    clearInterval(this.timer)
+    this.timer = null;
+  }
+
+  onLevelEnd = () => {
+    const { currentLevel } = this.state
+
+    if (levels.length > currentLevel + 1) {
+      return this.loadLevel(currentLevel + 1)
+    }
+    this.setState({
+      isGameFinished: true
+    })
+
+  }
+
+  count = () => {
+    const newValue = this.state.currentLeveLTimeLeft - 1
+    if (newValue >= 0) {
       this.setState({
-        currentLeveLTimeLeft: this.state.currentLeveLTimeLeft - 1
-      });
-    }, 1000)
+        currentLeveLTimeLeft: newValue
+      })
+    } else {
+      this.stopTimer()
+      this.onLevelEnd()
+    }
+
   }
 
 
   render() {
     return (
-      <App {...this.props} {...this.state} />
+      <App
+        {...this.props}
+        {...this.state}
+        onLevelClick={this.onLevelClick}
+        onTimerClick={this.onTimerClick}
+      />
     )
   }
 

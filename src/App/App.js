@@ -4,32 +4,56 @@ import MainDisplayer from './../MainDisplayer'
 import ChipsList from './../ChipsList'
 import LevelList from './../LevelList'
 import Header from './../Header'
-import Debugger from './../Debug'
 
 class App extends Component {
   render() {
-    const { className, currentLeveLTimeLeft, currentLevel, currentBlinds, nextBlinds } = this.props
+    const {
+      className,
+      isGameFinished,
+      currentLeveLTimeLeft,
+      currentLevel,
+      currentBlinds,
+      nextBlinds,
+      onLevelClick,
+      onTimerClick
+      } = this.props
     return (
       <React.Fragment>
         <div className={className}>
           <Header />
-          <LevelList />
-          <MainDisplayer
-            time={currentLeveLTimeLeft}
+          <LevelList
             currentLevel={currentLevel}
-            currentBlinds={currentBlinds}
-            nextBlinds={nextBlinds}
+            onLevelClick={onLevelClick}
           />
+          {
+            isGameFinished
+              ? <GameOver>
+                <h1>Game Over</h1>
+              </GameOver>
+              : <MainDisplayer
+                time={currentLeveLTimeLeft}
+                currentLevel={currentLevel}
+                currentBlinds={currentBlinds}
+                nextBlinds={nextBlinds}
+                onTimerClick={onTimerClick}
+              />
+          }
           <ChipsList />
           <Logo>
             <img src='http://www.knmf.im.uj.edu.pl/wp-content/uploads/2017/05/logo_knmfuj_150.png' />
           </Logo>
         </div>
-        <Debugger />
       </React.Fragment>
     );
   }
 }
+
+const GameOver = styled.div`
+    font-weight: BOLD;
+    font-size: 150px;
+    align-self: center;
+    justify-self: center;
+`
 
 const StyledComponent = styled(App) `
   height: 100vh;
@@ -46,7 +70,7 @@ const StyledComponent = styled(App) `
   ${LevelList}{
     grid-area: l;
   }
-  ${MainDisplayer}{
+  ${MainDisplayer}, ${GameOver} {
     grid-area: m;
   }
   ${ChipsList}{

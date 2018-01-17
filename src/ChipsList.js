@@ -42,7 +42,7 @@ export const ChipsList = ({ className }) => {
 const Chip = styled.div`
   display: flex;
   font-size: 30px;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   justify-content: center;
   align-items: center;
     position: relative;

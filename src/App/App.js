@@ -28,7 +28,7 @@ class App extends Component {
           {
             isGameFinished
               ? <GameOver>
-                <h1>Game Over</h1>
+                <h1></h1>
               </GameOver>
               : <MainDisplayer
                 time={currentLeveLTimeLeft}

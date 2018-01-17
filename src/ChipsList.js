@@ -2,32 +2,32 @@ import React from 'react'
 import styled from 'styled-components'
 
 const ChipList = [
-  {
-    img: 'http://samwell.me/wp-content/uploads/2016/09/poker-logo.png',
+  { // BLUE
+    img: 'http://www.chipsandgames.com/images/products/detail/201bl.png',
     value: 10
   },
-  {
-    img: 'http://samwell.me/wp-content/uploads/2016/09/poker-logo.png',
-    value: 20
+  { // GREEN 
+    img: 'http://www.chipsandgames.com/images/products/detail/201gr.png',
+    value: 25
   },
-  {
-    img: 'http://samwell.me/wp-content/uploads/2016/09/poker-logo.png',
+  { // WHITE
+    img: 'http://www.chipsandgames.com/images/products/detail/201wt.png',
     value: 50
   },
-  {
-    img: 'http://samwell.me/wp-content/uploads/2016/09/poker-logo.png',
+  { // BLACK
+    img: 'http://www.chipsandgames.com/images/products/detail/201bk.png',
     value: 100
   },
-  {
-    img: 'http://samwell.me/wp-content/uploads/2016/09/poker-logo.png',
-    value: 500
+  { // RED
+    img: 'http://www.chipsandgames.com/images/products/detail/201rd.png',
+    value: 250
   }
 ]
 
-export const ChipsList = ({className}) => {
+export const ChipsList = ({ className }) => {
   const mappedChips = ChipList.map(({ img, value }) => {
     return <Chip key={value}>
-      <img src={img}/>
+      <img src={img} />
       <span>{value}</span>
     </Chip>
   })
@@ -45,11 +45,12 @@ const Chip = styled.div`
   margin-bottom: 40px;
   justify-content: center;
   align-items: center;
+    position: relative;
   & > span { 
+    position: absolute;
     display: block; 
-    margin-left: 20px;
-    width: 50px;
     text-align: center;
+    font-weight: bold;
   }
 `
 
@@ -60,7 +61,7 @@ const StyledComponent = styled(ChipsList) `
   align-items: center;
 
   img {
-    --size: 60px;
+    --size: 100px;
     width: var(--size);
     height: var(--size);
   }
@@ -69,6 +70,9 @@ const StyledComponent = styled(ChipsList) `
     font-weight: bold;
     font-size: 50px;
     margin-bottom: 50px;
+  }
+  ${Chip}:nth-of-type(3){
+      color: blue;
   }
 `
 

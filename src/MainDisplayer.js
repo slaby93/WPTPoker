@@ -25,7 +25,7 @@ export const MainDisplayer = ({
     <div className={className}>
       <Level>{isBreak ? 'BREAK' : `Level: ${`${currentLevel}`.padStart(2, '0')}`}</Level>
       <Timer onClick={onTimerClick}>{formatSecondsAsTime(time)}</Timer>
-      {!isBreak && <CurrentBlinds>{`BLINDS: ${small}/${big}`}</CurrentBlinds>}
+      {!isBreak && <CurrentBlinds>{`BLINDS: ${small}/${big}`}{ante ? `(${ante})` : ''}</CurrentBlinds>}
       {isNextBreak && <Next>Next: Break</Next>}
       {!isNextBreak && nextBlinds && <Next>Next: {nextBlinds.small}/{nextBlinds.big}</Next>}
 

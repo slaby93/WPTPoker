@@ -36,7 +36,6 @@ export default [
     small: 150,
     big: 300,
     ante: 0,
-    value: 5
   },
   {
     type: 'level',
@@ -48,7 +47,7 @@ export default [
     type: 'level',
     small: 300,
     big: 600,
-    ante: 50,
+    ante: 25,
   },
   {
     type: 'BREAK'
@@ -57,18 +56,18 @@ export default [
     type: 'level',
     small: 400,
     big: 800,
-    ante: 100,
+    ante: 25,
   },
   {
     type: 'level',
     small: 500,
     big: 1000,
-    ante: 100,
+    ante: 50,
   },
   {
     type: 'level',
     small: 700,
     big: 1400,
-    ante: 200,
+    ante: 50,
   }
 ]

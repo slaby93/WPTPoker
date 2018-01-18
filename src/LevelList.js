@@ -37,7 +37,6 @@ export class LevelList extends React.PureComponent {
 const StyledComponent = styled(LevelList) `
   display: flex;
   flex-direction: column;
-  margin-top: 10%;
   overflow: auto;
 
   h1 {

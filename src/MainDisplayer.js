@@ -48,7 +48,7 @@ const Timer = styled.div`
 
 `
 const CurrentBlinds = styled.span`
-  font-size: 80px;
+  font-size: 60px;
   margin-bottom: 50px;
 `
 const StyledComponent = styled(MainDisplayer) `

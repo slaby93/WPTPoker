@@ -55,13 +55,12 @@ const Chip = styled.div`
 `
 
 const StyledComponent = styled(ChipsList) `
-  margin-top: 10%;
   display: flex;
   flex-direction: column;
   align-items: center;
 
   img {
-    --size: 100px;
+    --size: 90px;
     width: var(--size);
     height: var(--size);
   }
@@ -69,7 +68,7 @@ const StyledComponent = styled(ChipsList) `
   h1{
     font-weight: bold;
     font-size: 50px;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
   }
   ${Chip}:nth-of-type(3){
       color: blue;
